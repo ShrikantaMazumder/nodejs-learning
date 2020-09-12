@@ -1,23 +1,20 @@
-const http = require('http');
-
 const express = require('express');
+const bodyParser = require('body-parser');
+
+const adminRoutes = require('./routes/admin');
+const clientRoutes = require('./routes/shop');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(adminRoutes);
+app.use(clientRoutes);
 
 // app.use((req, res, next) => {
 //     console.log('I am middleware');
 //     next(); // This allows request to continue to the next middleware.
 // })
 
-app.use('/about',(req, res, next) => {
-    res.send('<h1>Hello From about page</h1>')
-
-    //....
-});
-
-app.use('/', (req,res,next) => {
-    res.send('<h1>This is home page</h1>')
-});
 
 // const server = http.createServer(app);
 
