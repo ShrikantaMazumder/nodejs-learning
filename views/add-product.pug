@@ -1,0 +1,21 @@
+extends layouts/main-layout.pug
+
+block title
+    title #{title}
+
+block styles
+    link(rel="stylesheet", href="/css/main.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/product.css")
+
+block content
+    main
+        form.product-form(action="/admin/add-product", method="POST")
+            div.form-control
+                label(for="title") Title
+                input(type="text", name="title", id="title")
+            div.form-control
+                label(for="price") Price
+                input(type="number", name="price", id="price")
+
+            button.btn(type="submit") Add Product

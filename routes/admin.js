@@ -6,7 +6,7 @@ const rootDir = require('../utils/path');
 
  // This is Get request
 router.get('/add-product',(req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+    res.render('add-product', { title: 'Add Product', path: '/admin/add-product' });
 
     //....
 });
