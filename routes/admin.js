@@ -11,9 +11,14 @@ router.get('/add-product',(req, res, next) => {
     //....
 });
 
+const products = [];
 // This is Post request
 router.post('/add-product', (req, res, next) => {
-    console.log(req.body);
+    const data = {
+        title: req.body.title,
+        price: req.body.price
+    };
+    products.push(data);
     res.redirect('/');
     // const method = req.method;
     // if (method === 'POST') {
@@ -22,4 +27,5 @@ router.post('/add-product', (req, res, next) => {
 });
 
 
-module.exports = router;
+exports.routes = router;
+exports.products = products;
