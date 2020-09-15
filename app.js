@@ -2,9 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const adminData = require('./routes/admin');
+// Routes
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
-const rootDir = require('./utils/path');
+
+// Controllers
+const errorController = require('./controllers/error');
 
 const app = express();
 
@@ -21,12 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')));
  * all url with /admin will go to this routes.
  * Though /admin is not needed in admin.js file
  */
-app.use('/admin',adminData.routes);
+app.use('/admin',adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res, next) => {
-    res.status(404).render('404', { title: 'Page Not Found' });
-});
+app.use(errorController.get404);
 
 // app.use((req, res, next) => {
 //     console.log('I am middleware');

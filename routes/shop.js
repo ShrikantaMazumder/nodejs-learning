@@ -1,13 +1,8 @@
 const express = require('express');
-const path = require('path');
 const router = express.Router();
-const rootDir = require('../utils/path');
-const adminData = require('./admin');
+const productController = require('../controllers/product');
 
-router.get('/', (req,res,next) => {
-    const products = adminData.products;
-    res.render('shop', { prods: products, title: 'My Shop', path: '/' });
-});
+router.get('/', productController.getProducts);
 
 
 module.exports = router;
