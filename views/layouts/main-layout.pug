@@ -19,5 +19,7 @@ html(lang="en")
                     li.main-header__item
                         a(href="/checkout", class=(path === '/checkout' ? 'active' : '')) Checkout
                     li.main-header__item
-                        a(href="/admin/admin-product", class=(path === '/admin/add-product' ? 'active' : '')) Admin Products
+                        a(href="/admin/products", class=(path === '/admin/products' ? 'active' : '')) Admin Products
+                    i.main-header__item
+                        a(href="/admin/add-product", class=(path === '/admin/add-product' ? 'active' : '')) Add Product
         block content
