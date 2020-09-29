@@ -21,4 +21,8 @@ module.exports = class Product {
         callback(product);
     }
 
+    static deleteById(id) {
+        
+    }
+
 }

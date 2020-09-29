@@ -1,0 +1,32 @@
+extends ../layouts/main-layout.pug
+
+block title
+    title #{title}
+
+block styles
+    link(rel="stylesheet", href="/css/main.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/product.css")
+
+block content
+    main
+        form.product-form(action="/admin/add-product", method="POST")
+            div.form-control
+                label(for="title") Title
+                input(type="text", name="title", id="title")
+            div.form-control
+                label(for="title") Image Url
+                input(type="text", name="image", id="image")
+            div.form-control
+                label(for="price") Price
+                input(type="number", name="price", id="price")
+            div.form-control
+                label(for="title") Description
+                input(type="textarea", name="description", id="description")
+            
+
+            
+            if editing
+                button.btn(type="submit") Update Product
+            else
+                button.btn(type="submit") Add Product

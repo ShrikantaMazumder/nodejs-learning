@@ -11,5 +11,11 @@ router.get('/products', adminController.getProducts);
 // This is Post request
 router.post('/add-product', adminController.postAddProduct);
 
+//Edit product
+router.get('/edit-product/:id', adminController.getEditProduct);
+
+// Delete product
+router.post('/delete-product', adminController.postDeleteProduct);
+
 
 module.exports = router;
