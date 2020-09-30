@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mongoConnect = require('./utils/database');
 
 // Routes
 const adminRoutes = require('./routes/admin');
@@ -37,5 +38,7 @@ app.use(errorController.get404);
 
 // const server = http.createServer(app);
 
-app.listen(3000, () => console.log('Server running in 3000'));
+mongoConnect(() => {
+    app.listen(3000);
+})
 

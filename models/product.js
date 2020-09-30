@@ -1,4 +1,4 @@
-const products = []
+const getDB = require('../utils/database').getDB;
 module.exports = class Product {
     constructor(prodTitle, prodImage, prodPrice, prodDesc) {
         this.title = prodTitle,
