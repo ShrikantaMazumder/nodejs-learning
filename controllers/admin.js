@@ -14,9 +14,14 @@ exports.postAddProduct = (req, res, next) => {
     const image = req.body.image;
     const description = req.body.description;
     const price = req.body.price;
-    const product = new Product(null,title,image,price,description);
-    product.save();    
-    res.redirect('/');
+    const product = new Product(title,image,price,description);
+    product.save()
+        .then(() => {
+            console.log('Product Created')
+            res.redirect('/admin/products')
+        })
+        .catch(err => console.log(err))
+    // res.redirect('/');
 };
 
 exports.getEditProduct = (req, res, next) => {
@@ -42,14 +47,18 @@ exports.getEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    const products = Product.fetchAll()
-    res.render('admin/products', 
-    { 
-        prods: products, 
-        title: 'Admin Products', 
-        path: '/admin/products',
-        hasProduct: products.length > 0
-    });
+    Product.fetchAll()
+        .then(products => {
+            res.render('admin/products',
+                {
+                    prods: products,
+                    title: 'Admin Products',
+                    path: '/admin/products',
+                    hasProduct: products.length > 0
+                });
+        })
+        .catch(err => console.log('Failed to fetch data.'))
+
 }
 
 exports.postDeleteProduct = (req, res, next) => {

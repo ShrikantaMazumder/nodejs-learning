@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const mongoConnect = require('./utils/database');
+const {mongoConnect} = require("./utils/database");
+
 
 // Routes
 const adminRoutes = require('./routes/admin');
@@ -9,6 +10,7 @@ const shopRoutes = require('./routes/shop');
 
 // Controllers
 const errorController = require('./controllers/error');
+
 
 const app = express();
 
@@ -19,7 +21,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Make public folder readable anywhere
 app.use(express.static(path.join(__dirname, 'public')));
-
 /**
  * Routes filtering
  * all url with /admin will go to this routes.
@@ -30,15 +31,15 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-// app.use((req, res, next) => {
-//     console.log('I am middleware');
-//     next(); // This allows request to continue to the next middleware.
-// })
+app.use((req, res, next) => {
+    // console.log('I am middleware');
+    next(); // This allows request to continue to the next middleware.
+})
 
 
 // const server = http.createServer(app);
 
-mongoConnect(() => {
-    app.listen(3000);
-})
 
+mongoConnect(() => {
+    app.listen(5000)
+})

@@ -1,4 +1,5 @@
-const getDB = require('../utils/database').getDB;
+const { getDB } = require('../utils/database');
+
 module.exports = class Product {
     constructor(prodTitle, prodImage, prodPrice, prodDesc) {
         this.title = prodTitle,
@@ -8,12 +9,19 @@ module.exports = class Product {
     }
 
     save() {
-        this.id = Math.random().toString();
-        products.push(this);
+        const db = getDB();
+        return db.collection('products').insertOne(this)
+            .then(result => console.log(result))
+            .catch(err => console.log(err))
     }
 
     static fetchAll() {
-        return products
+        const db = getDB();
+       return db.collection('products').find().toArray()
+           .then(products => {
+               return products;
+           })
+           .catch(err => console.log(err))
     }
 
     static getById(id, callback) {

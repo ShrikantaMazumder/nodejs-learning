@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3e2a4ab0-28f1-465f-ae3f-6eff4ecded84" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/database.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1iQTWMZ48DCYa7tx5qwSirXEJqt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../React/clarifai" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e2a4ab0-28f1-465f-ae3f-6eff4ecded84" name="Default Changelist" comment="" />
+      <created>1601838853197</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601838853197</updated>
+      <workItem from="1601838856867" duration="691000" />
+      <workItem from="1601840053161" duration="5000" />
+      <workItem from="1601870060736" duration="43000" />
+      <workItem from="1601979246191" duration="13000" />
+      <workItem from="1601980015935" duration="838000" />
+      <workItem from="1601980868423" duration="367000" />
+      <workItem from="1602009011874" duration="131000" />
+      <workItem from="1602147959106" duration="943000" />
+      <workItem from="1602149258156" duration="8207000" />
+      <workItem from="1602177074805" duration="1047000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="438" y="155" key="FileChooserDialogImpl" timestamp="1602009139901">
+      <screen x="62" y="27" width="1304" height="741" />
+    </state>
+    <state x="438" y="155" key="FileChooserDialogImpl/62.27.1304.741@62.27.1304.741" timestamp="1602009139901" />
+    <state width="1282" height="2" key="GridCell.Tab.0.bottom" timestamp="1602149242442">
+      <screen x="62" y="27" width="1304" height="741" />
+    </state>
+    <state width="1282" height="2" key="GridCell.Tab.0.bottom/62.27.1304.741@62.27.1304.741" timestamp="1602149242442" />
+    <state width="1282" height="2" key="GridCell.Tab.0.center" timestamp="1602149242442">
+      <screen x="62" y="27" width="1304" height="741" />
+    </state>
+    <state width="1282" height="2" key="GridCell.Tab.0.center/62.27.1304.741@62.27.1304.741" timestamp="1602149242442" />
+    <state width="1282" height="2" key="GridCell.Tab.0.left" timestamp="1602149242442">
+      <screen x="62" y="27" width="1304" height="741" />
+    </state>
+    <state width="1282" height="2" key="GridCell.Tab.0.left/62.27.1304.741@62.27.1304.741" timestamp="1602149242442" />
+    <state width="1282" height="2" key="GridCell.Tab.0.right" timestamp="1602149242442">
+      <screen x="62" y="27" width="1304" height="741" />
+    </state>
+    <state width="1282" height="2" key="GridCell.Tab.0.right/62.27.1304.741@62.27.1304.741" timestamp="1602149242442" />
+    <state x="223" y="31" width="1022" height="737" key="SettingsEditor" timestamp="1601981119545">
+      <screen x="62" y="27" width="1304" height="741" />
+    </state>
+    <state x="223" y="31" width="1022" height="737" key="SettingsEditor/62.27.1304.741@62.27.1304.741" timestamp="1601981119545" />
+  </component>
+</project>

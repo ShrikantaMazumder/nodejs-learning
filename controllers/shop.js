@@ -1,16 +1,17 @@
 const Product = require('../models/product');
 const Cart = require('../models/cart');
 
-exports.getProducts = (req,res,next) => {
-    const products = Product.fetchAll()
-    res.render('shop/product-list', 
-    { 
-        prods: products, 
-        title: 'My Shop', 
-        path: '/',
-        hasProduct: products.length > 0
-    });
-}
+// exports.getProducts = (req,res,next) => {
+//     const products = Product.fetchAll()
+//
+//     res.render('shop/product-list',
+//     {
+//         prods: products,
+//         title: 'My Shop',
+//         path: '/',
+//         hasProduct: products.length > 0
+//     });
+// }
 
 exports.productDetails = (req, res, next) => {
     const productId = req.params.productId;
@@ -21,14 +22,19 @@ exports.productDetails = (req, res, next) => {
 }
 
 exports.getIndex = (req, res, next) => {
-    const products = Product.fetchAll()
-    res.render('shop/index', 
-    { 
-        prods: products, 
-        title: 'All Products', 
-        path: '/',
-        hasProduct: products.length > 0
-    });
+    Product.fetchAll()
+        .then(products => {
+            res.render('shop/index',
+                {
+                    prods: products,
+                    title: 'All Products',
+                    path: '/',
+                    hasProduct: products.length > 0
+                });
+        })
+        .catch(err => console.log("Failed to fetch Data"))
+
+
 };
 
 exports.getCart = (req, res, next) => {
