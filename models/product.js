@@ -7,7 +7,7 @@ module.exports = class Product {
         this.image = prodImage,
         this.description = prodDesc,
         this.price = prodPrice,
-        this._id = id
+        this._id = ObjectId(id)
     }
 
     save() {
@@ -41,7 +41,16 @@ module.exports = class Product {
     }
 
     static deleteById(id) {
-        
+        const db = getDB();
+        return db.collection('products').deleteOne({_id: ObjectId(id)})
+            .then(res => {
+                console.log("Product Destroyed");
+                return res;
+            })
+            .catch(err => {
+                console.log("Error from Model", err);
+                return err;
+            })
     }
 
 }

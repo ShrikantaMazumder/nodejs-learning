@@ -22,7 +22,7 @@ block content
                             p.product__description #{product.description}
                         div.card__actions
                             a(href="/admin/edit-product/"+product._id, class="btn") Edit
-                            form(action="/delete", method="post")
+                            form(action="/admin/delete-product", method="POST")
                                 input(type="hidden", value=product._id, name='productId')
                                 button(type="submit", class="btn") Delete
                                 

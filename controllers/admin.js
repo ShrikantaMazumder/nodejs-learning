@@ -53,7 +53,7 @@ exports.postEditProduct = (req, res, next) => {
     const price = req.body.price;
     const description = req.body.description;
 
-    const product = new Product(title,image,price,description, ObjectId(id));
+    const product = new Product(title,image,price,description, id);
     product.save()
         .then(() => {
             console.log('Product Updated')
@@ -77,5 +77,11 @@ exports.getProducts = (req, res, next) => {
 }
 
 exports.postDeleteProduct = (req, res, next) => {
-    
+    Product.deleteById(req.body.productId)
+        .then(success => {
+            res.redirect('/admin/products');
+        })
+        .catch(err => {
+            console.log('Error from controller', err);
+        })
 }

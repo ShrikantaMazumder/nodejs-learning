@@ -25,15 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e2a4ab0-28f1-465f-ae3f-6eff4ecded84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/edit-product.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/edit-product.pug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/admin/products.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/products.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/index.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +78,7 @@
       <workItem from="1602478261841" duration="1435000" />
       <workItem from="1602533272768" duration="998000" />
       <workItem from="1602557750921" duration="3967000" />
-      <workItem from="1602590484461" duration="6326000" />
+      <workItem from="1602590484461" duration="9632000" />
     </task>
     <servers />
   </component>
