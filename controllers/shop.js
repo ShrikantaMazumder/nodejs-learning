@@ -15,9 +15,13 @@ const Cart = require('../models/cart');
 
 exports.productDetails = (req, res, next) => {
     const productId = req.params.productId;
-    Product.getById(productId, prod => {
-        res.render('shop/product-details', {prod: prod});
-    });
+    Product.getById(productId)
+        .then(product => {
+
+            res.render('shop/product-details', {prod: product});
+        })
+        .catch(err => console.log("Product Not Found"))
+
     
 }
 

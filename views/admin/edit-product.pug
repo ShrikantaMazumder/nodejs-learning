@@ -10,23 +10,19 @@ block styles
 
 block content
     main
-        form.product-form(action="/admin/add-product", method="POST")
+
+        form.product-form(action="/admin/edit-product/"+product._id, method="POST")
             div.form-control
                 label(for="title") Title
-                input(type="text", name="title", id="title")
+                input(type="text", name="title", value=product.title id="title")
             div.form-control
                 label(for="title") Image Url
-                input(type="text", name="image", id="image")
+                input(type="text", name="image", value=product.image id="image")
             div.form-control
                 label(for="price") Price
-                input(type="number", name="price", id="price")
+                input(type="number", name="price", value=product.price id="price")
             div.form-control
                 label(for="title") Description
-                input(type="textarea", name="description", id="description")
-            
+                input(type="textarea", name="description", value=product.description id="description")
 
-            
-            if editing
                 button.btn(type="submit") Update Product
-            else
-                button.btn(type="submit") Add Product

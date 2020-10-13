@@ -21,9 +21,9 @@ block content
                             h2.product__price $#{product.price}
                             p.product__description #{product.description}
                         div.card__actions
-                            a(href="/products/"+product.id, class="btn") Details
-                            form(action="/cart", method="post")
-                                input(type="hidden", value=product.id, name='productId')
+                            a(href="/admin/edit-product/"+product._id, class="btn") Edit
+                            form(action="/delete", method="post")
+                                input(type="hidden", value=product._id, name='productId')
                                 button(type="submit", class="btn") Delete
                                 
 

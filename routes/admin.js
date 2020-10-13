@@ -14,6 +14,9 @@ router.post('/add-product', adminController.postAddProduct);
 //Edit product
 router.get('/edit-product/:id', adminController.getEditProduct);
 
+// Update Product
+router.post('/edit-product/:id', adminController.postEditProduct);
+
 // Delete product
 router.post('/delete-product', adminController.postDeleteProduct);
 
