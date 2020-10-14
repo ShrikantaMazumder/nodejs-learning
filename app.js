@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const {mongoConnect} = require("./utils/database");
+const User = require("./models/user");
 
 
 // Routes
@@ -10,7 +11,6 @@ const shopRoutes = require('./routes/shop');
 
 // Controllers
 const errorController = require('./controllers/error');
-
 
 const app = express();
 
@@ -21,6 +21,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Make public folder readable anywhere
 app.use(express.static(path.join(__dirname, 'public')));
+
+// User route
+app.use((req, res, next) => {
+    User.findUserById("5f86fa7ee4dfacb76613ca95")
+        .then(user => {
+            console.log(user);
+            req.user = user;
+            next()
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
 /**
  * Routes filtering
  * all url with /admin will go to this routes.
@@ -28,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 app.use('/admin',adminRoutes);
 app.use(shopRoutes);
+
 
 app.use(errorController.get404);
 
