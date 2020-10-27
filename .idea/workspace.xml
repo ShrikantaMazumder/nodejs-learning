@@ -22,8 +22,13 @@
     <list default="true" id="3e2a4ab0-28f1-465f-ae3f-6eff4ecded84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/cart.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/shop/cart.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/cart.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/shop/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/index.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +39,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -53,6 +59,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Dart/dart-basics" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -83,7 +90,12 @@
       <workItem from="1602557750921" duration="3967000" />
       <workItem from="1602590484461" duration="11641000" />
       <workItem from="1602678284290" duration="3860000" />
-      <workItem from="1602688511051" duration="977000" />
+      <workItem from="1602688511051" duration="1670000" />
+      <workItem from="1602816409951" duration="8045000" />
+      <workItem from="1603348329905" duration="5000" />
+      <workItem from="1603684063756" duration="3530000" />
+      <workItem from="1603733049058" duration="4002000" />
+      <workItem from="1603771513237" duration="2564000" />
     </task>
     <servers />
   </component>
@@ -103,6 +115,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="447" y="147" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602817090076">
+      <screen x="62" y="27" width="1304" height="741" />
+    </state>
+    <state x="447" y="147" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/62.27.1304.741@62.27.1304.741" timestamp="1602817090076" />
     <state x="438" y="155" key="FileChooserDialogImpl" timestamp="1602617108624">
       <screen x="62" y="27" width="1304" height="741" />
     </state>

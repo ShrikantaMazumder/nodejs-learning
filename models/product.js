@@ -3,12 +3,12 @@ const ObjectId = require('mongodb').ObjectId;
 
 module.exports = class Product {
     constructor(prodTitle, prodImage, prodPrice, prodDesc, id, userId) {
-        this.title = prodTitle,
-        this.image = prodImage,
-        this.description = prodDesc,
-        this.price = prodPrice,
-            this.userId = userId,
-        this._id = id ? ObjectId(id) : null
+        this.title = prodTitle;
+        this.image = prodImage;
+        this.description = prodDesc;
+        this.price = prodPrice;
+            this.userId = userId;
+        this._id = id ? ObjectId(id) : null;
 
     }
 

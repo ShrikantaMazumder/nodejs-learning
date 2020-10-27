@@ -5,7 +5,20 @@ block title
 
 block styles
     link(rel="stylesheet", href="/css/main.css")
-    link(rel="stylesheet", href="/css/product.css")
+    link(rel="stylesheet", href="/css/cart.css")
 
 block content
-    h1 Cart
+    main
+        if products.length > 0
+            ul.cart__item-list
+                each product in products
+                    li.cart__item
+                        h1 #{product.title}
+                        h2 Quantity: #{product.quantity}
+                        form(action="/delete-cart-item", method="POST")
+                            input(type="hidden", value=product._id, name="productId")
+                            button(class="btn danger", type="submit") Delete
+                form(action='/create-order', method="POST")
+                    button(class="btn danger", type="submit") Order
+        else
+            h1 No Cart Items

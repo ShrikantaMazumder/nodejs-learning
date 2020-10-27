@@ -22,9 +22,9 @@ block content
                             p.product__description #{product.description}
                         div.card__actions
                             a(href="/products/"+product._id, class="btn") Details
-                            form(action="/cart", method="post")
-                                button(type="submit", class="btn") Add to Cart
+                            form(action="/cart", method="POST")
                                 input(type="hidden", value=product._id, name='productId')
+                                button(type="submit", class="btn") Add to Cart
 
         else
             h1 No Products
