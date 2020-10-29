@@ -1,6 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+
+//Mongoose
+const mongoose = require('mongoose');
+// MongoDB
 const {mongoConnect} = require("./utils/database");
 const User = require("./models/user");
 
@@ -24,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // User route
 app.use((req, res, next) => {
-    User.findUserById("5f86fa7ee4dfacb76613ca95")
+    User.findUserById("5f9a3e3a2c24c11199946abb")
         .then(user => {
             // console.log(user);
             req.user = new User(user.name, user.email, user.cart, user._id);
@@ -54,6 +58,31 @@ app.use((req, res, next) => {
 // const server = http.createServer(app);
 
 
+// MongoDB
+/*
 mongoConnect(() => {
     app.listen(5000)
 })
+ */
+
+// Mongoose
+mongoose.connect('mongodb+srv://mongo-auth:T1s5L63J1XnsIiZG@cluster0.gbyyk.mongodb.net/basic-node?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(result => {
+        app.listen(5000);
+        console.log('DB Connected');
+    })
+    .catch(err => console.log(err));
+
+
+
+
+
+
+
+
+
+
+
+
+
+

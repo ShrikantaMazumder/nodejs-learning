@@ -15,14 +15,15 @@ class User {
     }
 
     addToCart(product) {
-        const cartProductIndex = this.cart.items.findIndex(cp => {
+        const existingCart = this.cart ? this.cart.items : [];
+        const cartProductIndex = existingCart.findIndex(cp => {
             return cp.productId.toString() === product._id.toString();
         });
         let newQuantity = 1;
-        const updatedCartItems = [...this.cart.items];
+        const updatedCartItems = [...existingCart];
 
         if (cartProductIndex >= 0) {
-            newQuantity = this.cart.items[cartProductIndex].quantity + 1;
+            newQuantity = existingCart[cartProductIndex].quantity + 1;
             updatedCartItems[cartProductIndex].quantity = newQuantity
         } else {
             updatedCartItems.push({
