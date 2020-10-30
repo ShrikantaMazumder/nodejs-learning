@@ -5,9 +5,9 @@ const path = require('path');
 //Mongoose
 const mongoose = require('mongoose');
 // MongoDB
-const {mongoConnect} = require("./utils/database");
-const User = require("./models/user");
 
+// const {mongoConnect} = require("./utils/database");
+const User = require("./models/user");
 
 // Routes
 const adminRoutes = require('./routes/admin');
@@ -27,6 +27,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // User route
+
+// Mongoose Code
+app.use((req, res, next) => {
+    User.findById('5f9aef5989fdc7653926c61e')
+        .then(user => {
+            req.user = user;
+            next();
+        })
+        .catch(err => console.log(err));
+
+});
+// Mongodb
+/*
 app.use((req, res, next) => {
     User.findUserById("5f9a3e3a2c24c11199946abb")
         .then(user => {
@@ -38,6 +51,8 @@ app.use((req, res, next) => {
             console.log(err);
         });
 });
+
+ */
 /**
  * Routes filtering
  * all url with /admin will go to this routes.
@@ -68,6 +83,19 @@ mongoConnect(() => {
 // Mongoose
 mongoose.connect('mongodb+srv://mongo-auth:T1s5L63J1XnsIiZG@cluster0.gbyyk.mongodb.net/basic-node?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(result => {
+        User.findOne()
+            .then(user => {
+                if (!user) {
+                    const user = new User({
+                        name: 'Shrikanta',
+                        email: 'shrikanta@test.com',
+                        cart: {
+                            items: []
+                        }
+                    });
+                    user.save();
+                }
+            })
         app.listen(5000);
         console.log('DB Connected');
     })

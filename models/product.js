@@ -1,6 +1,38 @@
+// Mongoose Code
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const productSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    }
+});
+
+module.exports = mongoose.model('Product', productSchema);
+
+
+// MongoDB Code
+/*
+
 const { getDB } = require('../utils/database');
 const ObjectId = require('mongodb').ObjectId;
-
 module.exports = class Product {
     constructor(prodTitle, prodImage, prodPrice, prodDesc, id, userId) {
         this.title = prodTitle;
@@ -11,7 +43,6 @@ module.exports = class Product {
         this._id = id ? ObjectId(id) : null;
 
     }
-
     save() {
         const db = getDB();
         let dbOperation;
@@ -23,7 +54,6 @@ module.exports = class Product {
         }
         return dbOperation
     }
-
     static fetchAll() {
         const db = getDB();
        return db.collection('products').find().toArray()
@@ -32,7 +62,6 @@ module.exports = class Product {
            })
            .catch(err => console.log(err))
     }
-
     static getById(prodId) {
         const db = getDB();
         return db.collection('products').find({_id: ObjectId(prodId)}).next()
@@ -56,3 +85,4 @@ module.exports = class Product {
     }
 
 }
+*/
