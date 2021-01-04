@@ -10,6 +10,7 @@ exports.getIndex = (req, res, next) => {
                     prods: products,
                     title: 'Your Shop',
                     path: '/products',
+                    isAuthenticated: req.session.isLoggedIn,
                     hasProduct: products.length > 0
                 });
         })
@@ -28,12 +29,13 @@ exports.postCart = (req, res, next) => {
     const productId = req.body.productId;
     Product.findById(productId)
         .then(product => {
-            return req.user.addToCart(product);
+            req.user.addToCart(product);
         })
         .then(result => {
             console.log("Cart added");
             res.redirect('/cart');
         })
+        .catch(err => console.log(err));
 
 }
 exports.getCart = (req, res, next) => {
@@ -46,6 +48,7 @@ exports.getCart = (req, res, next) => {
                 {
                     title: 'Cart',
                     path: '/cart',
+                    isAuthenticated: req.session.isLoggedIn,
                     products: products
                 });
         })
@@ -79,7 +82,7 @@ exports.postOrder = (req, res, next) => {
             });
             order.save()
                 .then(result => {
-                    req.user.clearCart();
+                    return req.user.clearCart();
                 })
                 .then(() => {
                     res.redirect('/order')
@@ -93,6 +96,7 @@ exports.getOrders = (req, res, next) => {
             res.render('shop/order', {
                 path: 'order',
                 title: 'Orders',
+                isAuthenticated: req.session.isLoggedIn,
                 orders: orders
             });
         })

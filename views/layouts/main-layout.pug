@@ -14,12 +14,24 @@ html(lang="en")
                         a(href="/", class=(path === '/' ? 'active' : '')) Shop
                     li.main-header__item
                         a(href="/products", class=(path === '/products' ? 'active' : '')) Products
-                    li.main-header__item
-                        a(href="/cart", class=(path === '/cart' ? 'active' : '')) Cart
-                    li.main-header__item
-                        a(href="/checkout", class=(path === '/checkout' ? 'active' : '')) Checkout
-                    li.main-header__item
-                        a(href="/admin/products", class=(path === '/admin/products' ? 'active' : '')) Admin Products
-                    i.main-header__item
-                        a(href="/admin/add-product", class=(path === '/admin/add-product' ? 'active' : '')) Add Product
+                    if isAuthenticated
+                        li.main-header__item
+                            a(href="/cart", class=(path === '/cart' ? 'active' : '')) Cart
+                        li.main-header__item
+                            a(href="/order", class=(path === '/order' ? 'active' : '')) Order
+                        li.main-header__item
+                            a(href="/checkout", class=(path === '/checkout' ? 'active' : '')) Checkout
+                        li.main-header__item
+                            a(href="/admin/products", class=(path === '/admin/products' ? 'active' : '')) Admin Products
+                        li.main-header__item
+                            a(href="/admin/add-product", class=(path === '/admin/add-product' ? 'active' : '')) Add Product
+
+                ul.main-header__item-list
+                    if !isAuthenticated
+                        li.main-header__item
+                            a(href="/login", class=(path === '/login' ? 'active' : '')) Login
+                    if isAuthenticated
+                        li.main-header__item
+                            form(action="/logout", method="POST")
+                                button(type="submit") Logout
         block content

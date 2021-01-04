@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 //Mongoose
 const mongoose = require('mongoose');
-// MongoDB
 
 // const {mongoConnect} = require("./utils/database");
 const User = require("./models/user");
@@ -12,12 +12,27 @@ const User = require("./models/user");
 // Routes
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const authRoutes = require('./routes/auth');
 
 // Controllers
 const errorController = require('./controllers/error');
 
 const app = express();
+//MongoDB Uri
+const MONGODB_URI = 'mongodb+srv://mongo-auth:T1s5L63J1XnsIiZG@cluster0.gbyyk.mongodb.net/basic-node?retryWrites=true&w=majority';
 
+// Working with session.
+const store = new MongoDBStore({
+    uri: MONGODB_URI,
+    collection: "sessions"
+});
+// Session
+app.use(session({
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: false,
+    store: store
+}));
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
@@ -30,7 +45,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Mongoose Code
 app.use((req, res, next) => {
-    User.findById('5f9aef5989fdc7653926c61e')
+    if (!req.session.user) {
+        return next();
+    }
+    User.findById(req.session.user._id)
         .then(user => {
             req.user = user;
             next();
@@ -58,8 +76,9 @@ app.use((req, res, next) => {
  * all url with /admin will go to this routes.
  * Though /admin is not needed in admin.js file
  */
-app.use('/admin',adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
+app.use(authRoutes);
 
 
 app.use(errorController.get404);
@@ -81,7 +100,7 @@ mongoConnect(() => {
  */
 
 // Mongoose
-mongoose.connect('mongodb+srv://mongo-auth:T1s5L63J1XnsIiZG@cluster0.gbyyk.mongodb.net/basic-node?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
         User.findOne()
             .then(user => {
@@ -100,17 +119,3 @@ mongoose.connect('mongodb+srv://mongo-auth:T1s5L63J1XnsIiZG@cluster0.gbyyk.mongo
         console.log('DB Connected');
     })
     .catch(err => console.log(err));
-
-
-
-
-
-
-
-
-
-
-
-
-
-

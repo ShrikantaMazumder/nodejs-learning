@@ -24,6 +24,24 @@ const userSchema = new Schema({
 //AddToCart
 userSchema.methods.addToCart = function (product) {
 
+    // const cartProductIndex = this.cart.items.findIndex(cp => {
+    //     return cp.productId.toString() === product._id.toString();
+    // });
+    // let newQuantity = 1;
+    // const updatedCartItems = [...this.cart.items];
+
+    // if (cartProductIndex >= 0) {
+    //     newQuantity = this.cart.items[cartProductIndex].quantity + 1;
+    //     updatedCartItems[cartProductIndex].quantity = newQuantity
+    // } else {
+    //     updatedCartItems.push({
+    //         productId: product._id,
+    //         quantity: newQuantity
+    //     });
+    // }
+    // const updatedCart = { items: updatedCartItems };
+    // this.cart = updatedCart;
+    // return this.save();
     const cartProductIndex = this.cart.items.findIndex(cp => {
         return cp.productId.toString() === product._id.toString();
     });
@@ -32,14 +50,14 @@ userSchema.methods.addToCart = function (product) {
 
     if (cartProductIndex >= 0) {
         newQuantity = this.cart.items[cartProductIndex].quantity + 1;
-        updatedCartItems[cartProductIndex].quantity = newQuantity
+        updatedCartItems[cartProductIndex].quantity = newQuantity;
     } else {
         updatedCartItems.push({
             productId: product._id,
-            quantity: newQuantity
+            quantity: newQuantity,
         });
     }
-    const updatedCart = { items: updatedCartItems };
+    const updatedCart = { items: updatedCartItems }
     this.cart = updatedCart;
     return this.save();
 }
@@ -49,7 +67,8 @@ userSchema.methods.removeFromCart = function (productId) {
     const updatedCart = this.cart.items.filter(prod => {
         return prod._id.toString() !== productId.toString();
     })
-    this.cart = updatedCart;
+    console.log('updated cart', updatedCart);
+    this.cart.items = updatedCart;
     return this.save();
 }
 // Clear cart after order

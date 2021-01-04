@@ -15,6 +15,7 @@ block content
             img(src=prod.image, alt=prod.title)
         h2 $#{prod.price}
         p #{prod.description}
-        form(action="/cart", method="post")
-            button(type="submit", class="btn") Add to Cart
-            input(type="hidden", value=prod.id, name='productId')
+        if isAuthenticated
+            form(action="/cart", method="post")
+                button(type="submit", class="btn") Add to Cart
+                input(type="hidden", value=prod.id, name='productId')

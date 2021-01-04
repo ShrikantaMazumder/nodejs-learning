@@ -30,6 +30,7 @@ exports.getAddProduct = (req, res, next) => {
         {
             title: 'Add Product',
             path: '/admin/add-product',
+            isAuthenticated: req.session.isLoggedIn,
             editing: false,
         });
 };
@@ -37,13 +38,16 @@ exports.getAddProduct = (req, res, next) => {
 // Get all products
 exports.getProducts = (req, res, next) => {
     Product.find()
+        // .populate('userId') Get all user data by userId
         .then(products => {
+            console.log(products);
             res.render('admin/products',
                 {
                     prods: products,
                     title: 'Admin Products',
                     path: '/admin/products',
-                    hasProduct: products.length > 0
+                    hasProduct: products.length > 0,
+                    isAuthenticated: req.session.isLoggedIn,
                 });
         })
         .catch(err => console.log('Failed to fetch data.'))
@@ -60,6 +64,7 @@ exports.getEditProduct = (req, res, next) => {
                 {
                     title: 'Edit Product',
                     path: '/admin/edit-product',
+                    isAuthenticated: req.session.isLoggedIn,
                     product: product
                 });
         })
