@@ -11,6 +11,7 @@ block styles
 block content
     main
         form.product-form(action="/admin/add-product", method="POST")
+            input(type="hidden", value=csrfToken, name="_csrf")
             div.form-control
                 label(for="title") Title
                 input(type="text", name="title", id="title")
@@ -23,6 +24,5 @@ block content
             div.form-control
                 label(for="description") Description
                 input(type="textarea", name="description", id="description")
-            
 
             button.btn(type="submit") Add Product

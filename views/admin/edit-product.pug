@@ -12,6 +12,7 @@ block content
     main
 
         form.product-form(action="/admin/edit-product/"+product._id, method="POST")
+            input(type="hidden", value=csrfToken, name="_csrf")
             div.form-control
                 label(for="title") Title
                 input(type="text", name="title", value=product.title id="title")

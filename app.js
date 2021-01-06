@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-//Mongoose
 const mongoose = require('mongoose');
+const csrf = require('csurf');
+const flash = require('connect-flash');
 
-// const {mongoConnect} = require("./utils/database");
+// Models
 const User = require("./models/user");
 
 // Routes
@@ -18,6 +19,7 @@ const authRoutes = require('./routes/auth');
 const errorController = require('./controllers/error');
 
 const app = express();
+
 //MongoDB Uri
 const MONGODB_URI = 'mongodb+srv://mongo-auth:T1s5L63J1XnsIiZG@cluster0.gbyyk.mongodb.net/basic-node?retryWrites=true&w=majority';
 
@@ -33,6 +35,13 @@ app.use(session({
     saveUninitialized: false,
     store: store
 }));
+// flash message
+app.use(flash());
+
+// CSRF
+const csrfProtection = csrf();
+
+
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
@@ -41,7 +50,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Make public folder readable anywhere
 app.use(express.static(path.join(__dirname, 'public')));
 
-// User route
+app.use(csrfProtection);
 
 // Mongoose Code
 app.use((req, res, next) => {
@@ -55,6 +64,13 @@ app.use((req, res, next) => {
         })
         .catch(err => console.log(err));
 
+});
+
+// set this for every request automatically
+app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.session.isLoggedIn;
+    res.locals.csrfToken = req.csrfToken();
+    next();
 });
 // Mongodb
 /*
@@ -89,8 +105,6 @@ app.use((req, res, next) => {
 })
 
 
-// const server = http.createServer(app);
-
 
 // MongoDB
 /*
@@ -102,19 +116,6 @@ mongoConnect(() => {
 // Mongoose
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
-        User.findOne()
-            .then(user => {
-                if (!user) {
-                    const user = new User({
-                        name: 'Shrikanta',
-                        email: 'shrikanta@test.com',
-                        cart: {
-                            items: []
-                        }
-                    });
-                    user.save();
-                }
-            })
         app.listen(5000);
         console.log('DB Connected');
     })

@@ -23,6 +23,7 @@ block content
                         div.card__actions
                             a(href="/admin/edit-product/"+product._id, class="btn") Edit
                             form(action="/admin/delete-product", method="POST")
+                                input(type="hidden", value=csrfToken, name="_csrf")
                                 input(type="hidden", value=product._id, name='productId')
                                 button(type="submit", class="btn") Delete
                                 

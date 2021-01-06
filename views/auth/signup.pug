@@ -12,12 +12,18 @@ block content
     main
         if errMsg
             div.user-message.user-message--error #{errMsg}
-        form.login-form(action="/login", method="POST")
+        form.login-form(action="/signup", method="POST")
             input(type="hidden", value=csrfToken, name="_csrf")
+            div.form-control
+                label(for="name") Name
+                input(type="text", name="name", id="name")
             div.form-control
                 label(for="email") Email
                 input(type="email", name="email", id="email")
             div.form-control
                 label(for="password") Password
                 input(type="password", name="password", id="password")
-                button.btn(type="submit") Login
+            div.form-control
+                label(for="confirmPassword") Confirm Password
+                input(type="password", name="confirmPassword", id="confirmPassword")
+                button.btn(type="submit") Signup

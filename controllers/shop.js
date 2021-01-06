@@ -10,8 +10,7 @@ exports.getIndex = (req, res, next) => {
                     prods: products,
                     title: 'Your Shop',
                     path: '/products',
-                    isAuthenticated: req.session.isLoggedIn,
-                    hasProduct: products.length > 0
+                    hasProduct: products.length > 0,
                 });
         })
         .catch(err => console.log(err))
@@ -48,7 +47,6 @@ exports.getCart = (req, res, next) => {
                 {
                     title: 'Cart',
                     path: '/cart',
-                    isAuthenticated: req.session.isLoggedIn,
                     products: products
                 });
         })
@@ -96,7 +94,6 @@ exports.getOrders = (req, res, next) => {
             res.render('shop/order', {
                 path: 'order',
                 title: 'Orders',
-                isAuthenticated: req.session.isLoggedIn,
                 orders: orders
             });
         })

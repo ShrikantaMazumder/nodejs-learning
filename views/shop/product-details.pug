@@ -17,5 +17,6 @@ block content
         p #{prod.description}
         if isAuthenticated
             form(action="/cart", method="post")
+                input(type="hidden", value=csrfToken, name="_csrf")
                 button(type="submit", class="btn") Add to Cart
                 input(type="hidden", value=prod.id, name='productId')

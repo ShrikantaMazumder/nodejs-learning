@@ -30,7 +30,6 @@ exports.getAddProduct = (req, res, next) => {
         {
             title: 'Add Product',
             path: '/admin/add-product',
-            isAuthenticated: req.session.isLoggedIn,
             editing: false,
         });
 };
@@ -47,7 +46,6 @@ exports.getProducts = (req, res, next) => {
                     title: 'Admin Products',
                     path: '/admin/products',
                     hasProduct: products.length > 0,
-                    isAuthenticated: req.session.isLoggedIn,
                 });
         })
         .catch(err => console.log('Failed to fetch data.'))
@@ -64,7 +62,6 @@ exports.getEditProduct = (req, res, next) => {
                 {
                     title: 'Edit Product',
                     path: '/admin/edit-product',
-                    isAuthenticated: req.session.isLoggedIn,
                     product: product
                 });
         })
